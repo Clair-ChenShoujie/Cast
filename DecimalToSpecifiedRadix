@@ -3,6 +3,8 @@
 #include <string.h>
 #include <ctype.h>
 
+//Evaluates an arithmetic expression and returns the result. Evaluates an arithmetic expression and returns the result
+
 // Function prototypes
 int evaluate_expression(char* expression);
 void convert_to_radix(int value, int radix);
