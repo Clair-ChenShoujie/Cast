@@ -1,0 +1,35 @@
+--求供应工程JI零件P1的供应商号码SNO
+select distinct SNO
+from spj
+where jno='J1' and pno='p1';
+
+
+--求供应工程 J1 零件为红色的供应商号码 SNO
+select distinct sno
+from p,spj
+where spj.jno='J1'and p.color='红'and spj.pno=p.pno;
+
+
+--求没有使用天津供应商生产的红色零件的工程号 JNO 
+select distinct jno
+from spj
+where jno not in
+	(select jno
+	from s,p,spj
+	where s.city='天津' and p.color='红' and s.sno=spj.sno and p.pno=spj.pno);
+  
+  
+--求至少用了供应商S1所供应的全部零件的工程号JNO
+
+--查询S1供应商供应的零件号,结果为P1P2
+select distinct pno
+from spj
+where sno='S1';
+
+--S1包含零件P1P2，选出既用P1也用P2的工程号JNO
+select jno
+from spj
+where pno='P1' and jno in
+	(select jno
+	from spj
+	where pno='P2');
