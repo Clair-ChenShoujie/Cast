@@ -3,3 +3,11 @@ select distinct pname,qty
 from P,SPJ
 where spj.jno='J2'and p.pno=spj.pno;
 
+--找出没有使用天津产的零件的工程号码
+select distinct jno
+from spj
+where jno not in 
+	(select jno
+	from s,spj
+	where s.sno=spj.sno
+	and city='天津')
