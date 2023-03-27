@@ -1,0 +1,5 @@
+--找出工程项目J2使用的各种零件的名称及其数量
+select distinct pname,qty
+from P,SPJ
+where spj.jno='J2'and p.pno=spj.pno;
+
